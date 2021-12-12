@@ -6,6 +6,8 @@ from werkzeug.utils import secure_filename
 
 from models.emotion_recognition import get_emotions
 from models.text_recognition import get_ocr
+from models.text_similarity import find_similarity
+
 
 UPLOAD_FOLDER = '/uploads'
 
@@ -34,7 +36,7 @@ def text_recognition():
 
 @app.route('/similar-recognition', methods=['POST'])
 def similar_recognition():
-    return ''
+    return str(find_similarity(request.args.get('text1'), request.args.get('text2')))
 
 
 if __name__ == '__main__':

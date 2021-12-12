@@ -3,7 +3,7 @@ from torch.nn.functional import softmax
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
 
 emotion_tokenizer = AutoTokenizer.from_pretrained("cointegrated/rubert-tiny2-cedr-emotion-detection")
-emotion_model = AutoModelForSequenceClassification.from_pretrained("cointegrated/rubert-tiny2-cedr-emotion-detection")
+emotion_model = AutoModelForSequenceClassification.from_pretrained("cointegrated/rubert-tiny2-cedr-emotion-detection").eval()
 labels = ['нет эмоций', 'радость', 'грусть', 'удивление', 'страх', 'злость']
 
 
