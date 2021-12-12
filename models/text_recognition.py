@@ -1,11 +1,11 @@
-try:
-    from PIL import Image
-except ImportError:
-    import Image
-import pytesseract
+from easyocr import Reader
+import argparse
+import cv2
 
 
-def get_ocr(image_path):
-    img = Image.open(image_path)
-    res = pytesseract.image_to_string(image_path)
-    return res
+def get_ocr(filename):
+    image = cv2.imread(filename)
+
+    reader = Reader(lang_list=['en', 'ru'])
+    results = reader.readtext(image)
+    return ' '.join([i[1] for i in results])
